@@ -1,0 +1,202 @@
+/* === GLOBAL RESET === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+/* === BODY === */
+body {
+    background-color: #000;
+    color: #00ff66;
+    font-family: monospace, monospace;
+    padding-top: 70px; /* space for fixed header */
+}
+
+/* === HEADER === */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #00ff66;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    z-index: 1000;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 0;
+}
+
+.header-left img {
+    height: 55px;
+    width: auto;
+    color:#00ff66;
+}
+
+.header-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+.header-text h1 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+.header-text h5 {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #00cc55;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+nav a {
+    color: #00ff66;
+    margin-left: 1rem;
+    text-decoration: none;
+    white-space: nowrap;
+}
+nav a:hover {
+    color: #ffff66;
+    text-shadow: 0 0 8px #ffff66;
+}
+
+@media (max-width: 750px) {
+    header {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    nav {
+        margin-top: 0.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+/* Typing effect with disappearing cursor */
+.typewriter {
+    overflow: hidden;
+    border-right: .15em solid #00ff66;
+    white-space: nowrap;
+    display: inline-block;
+    animation: typing 3s steps(30, end), blink-caret .75s step-end infinite;
+}
+.finished {
+    border-right: none;
+}
+@keyframes typing {
+    from { width: 0 }
+    to { width: 30% }
+}
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #00ff66; }
+}
+
+/* === SECTIONS === */
+section {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.ascii-divider {
+    color: #00cc55;
+    margin: 1rem 0;
+    font-weight: bold;
+}
+
+/* Project list layout */
+.project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    list-style: none;
+    padding: 0;
+}
+.project-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px dotted #00ff66;
+    padding-bottom: 0.5rem;
+}
+.project-item span {
+    flex: 1;
+}
+.project-item .button {
+    min-width: 100px;
+    text-align: center;
+}
+
+/* Buttons */
+.button {
+    display: inline-block;
+    padding: 0.6rem 1rem;
+    background: transparent;
+    border: 1px solid #00ff66;
+    color: #00ff66;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+.button:hover {
+    border-color: #ffff66;
+    color: #ffff66;
+    text-shadow: 0 0 8px #ffff66;
+}
+
+/* === FORMS === */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+input, textarea {
+    padding: 0.5rem;
+    background-color: #000;
+    border: 1px solid #00ff66;
+    color: #00ff66;
+    font-family: monospace;
+}
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #ffff66;
+    box-shadow: 0 0 5px #ffff66;
+}
+
+/* Footer */
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 1rem 2rem;
+    border-top: 1px solid #00ff66;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+}
