@@ -153,6 +153,22 @@ h2 {
     font-weight: bold;
 }
 
+/* === TERMINAL FLAIR === */
+.prompt {
+    color: #ffff66;
+    margin: 0 0 0.6rem 0;
+}
+.prompt::after {
+    content: "\2588";
+    color: #00ff66;
+    margin-left: 0.25em;
+    animation: blink-caret 0.75s step-end infinite;
+}
+.ok {
+    color: #00cc55;
+    margin-right: 0.4em;
+}
+
 /* === LAYOUT HELPERS === */
 .row {
     display: flex;
@@ -199,6 +215,35 @@ h2 {
 .project-item .button {
     min-width: 100px;
     text-align: center;
+}
+
+/* === RESUME === */
+section.resume {
+    max-width: 1024px;
+    padding: 1rem 1.5rem;
+    border: 1px dashed #00ff66;
+    background: rgba(0, 255, 102, 0.04);
+}
+.edu-columns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 2rem;
+}
+.edu-columns > div {
+    flex: 1 1 280px;
+}
+.resume h1 {
+    margin: 0 0 1.2rem 0;
+    font-size: 1.4rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px dotted #00ff66;
+}
+.resume h3 {
+    margin: 1.8rem 0 0.9rem 0;
+}
+.resume p {
+    margin: 0 0 0.45rem 0;
+    white-space: pre-wrap;
 }
 
 /* === BUTTONS === */
@@ -257,7 +302,12 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
     background-color: #000;
+}
+footer nav a:first-child {
+    margin-left: 0;
 }
 
 /* === RESPONSIVE / MOBILE (readable mode) === */
@@ -291,9 +341,14 @@ footer {
         width: 100%;
     }
     nav a {
-        margin: 0.35rem 0.75rem;
+        margin: 0.3rem 0.35rem;
+        padding: 0.4rem 0.5rem;
         font-size: 0.9rem;
         white-space: nowrap;
+    }
+
+    .button {
+        padding: 0.75rem 1rem;
     }
 
     h2 {
@@ -340,5 +395,18 @@ footer {
         flex-direction: column;
         gap: 0.2rem;
         text-align: center;
+    }
+}
+
+/* === ACCESSIBILITY: reduced motion === */
+@media (prefers-reduced-motion: reduce) {
+    .typewriter,
+    .prompt::after {
+        animation: none !important;
+    }
+    .typewriter {
+        border-right: none;
+        white-space: normal;
+        width: 100%;
     }
 }

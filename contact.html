@@ -3,9 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CONTACT</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="img/logo.svg">
+<title>CONTACT</title>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/x-icon" href="img/logo.svg">
+<meta name="theme-color" content="#000">
+<meta name="description" content="Contact Szymon Scherb (SIMKO) - send an email or find me on GitHub.">
+<meta property="og:title" content="<SZYMON_SCHERB/> - Contact">
+<meta property="og:description" content="Contact Szymon Scherb (SIMKO) - send an email or find me on GitHub.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="img/simko-logo.png">
 </head>
 <body>
 <header>
@@ -39,10 +45,10 @@
     <p>| Send a message via email:</p>
     <p>┴</p>
     <br>
-    <form action="mailto:siemko@web.de" method="post" enctype="text/plain">
-        <input type="text" name="name" placeholder="NAME" required>
-        <input type="email" name="email" placeholder="EMAIL" required>
-        <textarea name="message" rows="10" placeholder="YOUR MESSAGE" required></textarea>
+    <form action="mailto:siemko@web.de" method="get" enctype="text/plain">
+        <input type="text" name="subject" placeholder="SUBJECT" required>
+        <input type="email" name="cc" placeholder="YOUR EMAIL" required>
+        <textarea name="body" rows="10" placeholder="YOUR MESSAGE" required></textarea>
         <div class="row end">
             <button class="button" type="submit">[ SEND MESSAGE ]</button>
         </div>
@@ -61,6 +67,12 @@
 
 <footer>
     <p>&copy; 2026 SIMKO. <br>All rights reserved.</p>
+    <nav class="footer-nav">
+        <a href="index.html">HOME</a>
+        <a href="resume.html">RESUME</a>
+        <a href="projects.html">PROJECTS</a>
+        <a href="contact.html">CONTACT</a>
+    </nav>
 </footer>
 
 </body>
