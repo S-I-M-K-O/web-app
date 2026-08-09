@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRIVATE AI HOME INTEGRATION | PROJECTS</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/x-icon" href="../img/logo.svg">
+</head>
+<body>
+<header>
+    <div class="header-left">
+        <a href="../index.html"><img src="../img/logo.svg" alt="Logo"></a>
+        <div class="header-text">
+            <h1>&lt;SZYMON_SCHERB/&gt;</h1>
+            <h5>aka SIMKO</h5>
+        </div>
+    </div>
+    <nav>
+        <a href="../index.html">HOME</a>
+        <a href="../resume.html">RESUME</a>
+        <a href="../projects.html" style="text-decoration:underline;">PROJECTS</a>
+        <a href="../contact.html">CONTACT</a>
+    </nav>
+</header>
+
+<section>
+    <p class="ascii-divider">+----------------------------------------------------------------------------------------</p>
+    <h2 class="typewriter" id="welcome-text">PRIVATE AI HOME INTEGRATION</h2>
+    <p>Self-hosted, private AI at home.<br></p>
+    <p class="ascii-divider">+----------------------------------------------------------------------------------------</p>
+</section>
+<br>
+
+<section>
+    <div class="project-card">
+        <h1>Private AI Home Integration</h1>
+        <br>
+        <p>┬</p>
+        <p>| STATUS: RUNNING </p>
+        <p>| LAST UPDATE: JAN 2026 </p>
+        <p>┴</p>
+        <br>
+        <p>[+] Short summary:</p>
+        <br>
+        <p>A private, self-hosted AI stack for the home lab. All inference runs on own hardware, no data leaves the house, and the whole thing is reachable from anywhere through a WireGuard tunnel.</p>
+        <br>
+        <p>[+] Problem:</p>
+        <br>
+        <p>Using the big cloud AI services is easy, but you pay with your data and a monthly subscription. Prompts and context go to somebody else's servers, get stored, and get used for training. For a DevSecOps guy that's like leaving your SSH key in a public gist - it works, but it feels wrong.</p>
+        <p>I wanted an assistant that I can also feed home automation data and personal context into, without any third party being able to read along.</p>
+        <br>
+        <p>[+] Solution:</p>
+        <br>
+        <p>Self-hosting on a small GPU node (NVIDIA RTX, ~8 GB VRAM) in the rack. This is what the stack looks like:</p>
+        <p>┬</p>
+        <p>├─ ollama             - local model runtime</p>
+        <p>├─ open-webui         - chat UI with user management</p>
+        <p>├─ llama.cpp          - low-level inference backend</p>
+        <p>├─ Tailscale          - zero-config WireGuard for remote access</p>
+        <p>├─ sematext / loki server - prompt + system logging</p>
+        <p>└─ docker compose     - everything wrapped in containers</p>
+        <br>
+        <p>Every container sits behind a reverse proxy, and ssh-style key auth + SSRF hardening are in place so the web UI can never be abused as a proxy into the lab.</p>
+        <br>
+        <p>[+] Lessons learned:</p>
+        <br>
+        <p>The model matters more than the coolest UI. A quantized 7B parameter model runs fine on this hardware and covers 90% of the use cases like summarization and home automation callouts. Running the same model on CPU is technically possible but painfully slow.</p>
+        <p>What I would build differently next time: a proper RAG pipeline on top, so the assistant can actually query the smart home state instead of just chatting.</p>
+        <br>
+        <div class="row end">
+            <a class="button" href="../projects.html">&lt; BACK TO PROJECTS</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 SIMKO. <br>All rights reserved.</p>
+</footer>
+
+</body>
+</html>

@@ -10,7 +10,7 @@
 <body>
 <header>
     <div class="header-left">
-        <img src="img/logo.svg" alt="Logo">
+        <a href="index.html"><img src="img/logo.svg" alt="Logo"></a>
         <div class="header-text">
             <h1>&lt;SZYMON_SCHERB/&gt;</h1>
             <h5>aka SIMKO</h5>
@@ -25,59 +25,34 @@
 </header>
 
 <section>
-    <div class="ascii-divider">+----------------------------------------------------------------------------------------+
+    <p class="ascii-divider">+----------------------------------------------------------------------------------------</p>
     <h2 class="typewriter" id="welcome-text">SHARABLE PROJECTS</h2>
-    <p>Things I wanted to Document Extensivly.<br>
-    <div class="ascii-divider">+----------------------------------------------------------------------------------------+
+    <p>Things I wanted to document extensively. Pick one and dive in.<br></p>
+    <p class="ascii-divider">+----------------------------------------------------------------------------------------</p>
 </section>
 <br>
 
-<section class="projects-page">
+<section>
     <h1>PROJECTS</h1>
-    <div class="project-grid">
-        <div class="kubernetes-hetzner-project-card">
-            <h3> Kubernetes Cluster Creation with Kubespray</h3>
-            <p>┬</p>        
-            <p>| 16. OCT 2024 </p>
-            <p>┴</p>
-            <p>[+] Short summary:</p>
-            <br>
-            <p>Developed and implemented an Terraforn/GitLab CI/CD pipeline to automatically deploy a Hetzner server cluster, with a fully bootstrapped Kubernetes cluster using Kubespray.</p>
-            <br>
-            <p>[+] Problem:</p>
-            <br>
-            <p>So Kubernetes clusters out of the box - sounds super cool. But if you want to do it on your own there are not so many good working soultions.</p>
-            <p>Additionally to this if you want to use the Hetzner Cloud because, of financial purposes mostly, there are almost no solutions.</p>
-            <br>
-            <p>[+] Solution:</p>
-            <br>
-            <p>But here comes KUBESPRAY. Making our (or at least my) lives better.</p>
-            <p>So as a DevOps I wanted to try this out and have created a Project for testing.</p>
-            <br>
-            <br>
-            <p>
-            My goal was to Create a cool cluster setup with terraform Gitlab-CI/CD-Pipelines and Kubespray and let it run on the Hetzner Cloud.
-            So the first thing that was important was to create the nessesary terraform files.
-            </p>
-            <p>┬</p>        
-            <p>├─ provider.tf   </p>
-            <p>├─ backend.tf    </p>
-            <p>├─ main.tf       </p>
-            <p>├─ variables.tf  </p>
-            <p>└─ outputs.tf    </p>
-            <br>
-            <p>
-                I think the thing that was hardest was to get used to the hetzner terraform provider.<br>
-                Regarding the fact that it is not used by many people, I understand that it is a little bit unsophisticated. The good nows is: You'll get used to it.
-                The outputs file gives us the ip adresses of the nodes, so we can  connect to them and access the masternode.
-            </p>
-
-        </div>
-    </div>
+    <br>
+    <ul class="project-list">
+        <li class="project-item">
+            <span>[+] Kubernetes Cluster Creation with Kubespray</span>
+            <a class="button" href="projects/kubernetes-hetzner-cluster.html">[ VIEW ]</a>
+        </li>
+        <li class="project-item">
+            <span>[+] Private AI Home Integration</span>
+            <a class="button" href="projects/ai-home-integration.html">[ VIEW ]</a>
+        </li>
+        <li class="project-item">
+            <span>[+] Smart Home IoT System</span>
+            <a class="button" href="projects/smart-home-iot.html">[ VIEW ]</a>
+        </li>
+    </ul>
 </section>
 
 <footer>
-    <p>&copy; 2025 SIMKO. <br>All rights reserved.</p>
+    <p>&copy; 2026 SIMKO. <br>All rights reserved.</p>
 </footer>
 
 </body>

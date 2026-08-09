@@ -6,7 +6,8 @@
 }
 
 html {
-  overflow-y: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 /* === BODY === */
@@ -15,6 +16,32 @@ body {
     color: #00ff66;
     font-family: monospace, monospace;
     padding-top: 70px; /* space for fixed header */
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Geeky touch: green text selection */
+::selection {
+    background: #00ff66;
+    color: #000;
+}
+
+/* Subtle CRT scanline overlay */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(0, 255, 102, 0.028) 0,
+        rgba(0, 255, 102, 0.028) 1px,
+        transparent 1px,
+        transparent 3px
+    );
 }
 
 /* === HEADER === */
@@ -42,7 +69,11 @@ header {
 .header-left img {
     height: 55px;
     width: auto;
-    color:#00ff66;
+    color: #00ff66;
+}
+
+.header-left a:hover img {
+    filter: drop-shadow(0 0 6px rgba(0, 255, 102, 0.7));
 }
 
 .header-text {
@@ -53,6 +84,7 @@ header {
 .header-text h1 {
     margin: 0;
     font-size: 1.2rem;
+    text-shadow: 0 0 6px rgba(0, 255, 102, 0.5);
 }
 .header-text h5 {
     margin: 0;
@@ -64,6 +96,8 @@ nav {
     display: flex;
     align-items: center;
     flex-shrink: 0;
+    flex-wrap: wrap;
+    gap: 0;
 }
 nav a {
     color: #00ff66;
@@ -71,22 +105,10 @@ nav a {
     text-decoration: none;
     white-space: nowrap;
 }
-nav a:hover {
+nav a:hover,
+nav a:focus {
     color: #ffff66;
     text-shadow: 0 0 8px #ffff66;
-}
-
-@media (max-width: 750px) {
-    header {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    nav {
-        margin-top: 0.5rem;
-        flex-wrap: wrap;
-        justify-content: center;
-        width: 100%;
-    }
 }
 
 /* Typing effect with disappearing cursor */
@@ -116,6 +138,10 @@ section {
     padding: 1rem;
 }
 
+h1, h2 {
+    text-shadow: 0 0 6px rgba(0, 255, 102, 0.55);
+}
+
 h2 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
@@ -127,7 +153,31 @@ h2 {
     font-weight: bold;
 }
 
-/* Project list layout */
+/* === LAYOUT HELPERS === */
+.row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+.row.end {
+    justify-content: flex-end;
+}
+
+/* === PROJECT LIST === */
+.project-card {
+    max-width: 760px;
+    padding: 1rem;
+    border: 1px dashed #00ff66;
+    background: rgba(0, 255, 102, 0.04);
+}
+.project-card h1 {
+    font-size: 1.4rem;
+}
+.project-card p {
+    white-space: pre-wrap;
+}
+
 .project-list {
     display: flex;
     flex-direction: column;
@@ -139,6 +189,7 @@ h2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 0.5rem;
     border-bottom: 1px dotted #00ff66;
     padding-bottom: 0.5rem;
 }
@@ -150,7 +201,7 @@ h2 {
     text-align: center;
 }
 
-/* Buttons */
+/* === BUTTONS === */
 .button {
     display: inline-block;
     padding: 0.6rem 1rem;
@@ -160,10 +211,12 @@ h2 {
     text-decoration: none;
     transition: all 0.3s ease;
 }
-.button:hover {
+.button:hover,
+.button:focus {
     border-color: #ffff66;
     color: #ffff66;
     text-shadow: 0 0 8px #ffff66;
+    box-shadow: 0 0 10px rgba(255, 255, 102, 0.25);
 }
 
 /* === FORMS === */
@@ -172,31 +225,120 @@ form {
     flex-direction: column;
     gap: 0.5rem;
 }
-
-input, textarea {
+input,
+textarea {
     padding: 0.5rem;
     background-color: #000;
     border: 1px solid #00ff66;
     color: #00ff66;
-    font-family: monospace;
+    font-family: monospace, monospace;
+    font-size: 1rem;
+    border-radius: 0;
 }
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
     outline: none;
     border-color: #ffff66;
     box-shadow: 0 0 5px #ffff66;
 }
+textarea {
+    resize: vertical;
+}
+form .button {
+    cursor: pointer;
+}
 
-/* Footer */
-
+/* === FOOTER === */
 footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
     width: 100%;
+    margin-top: auto;
     padding: 1rem 2rem;
     border-top: 1px solid #00ff66;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #000;
+}
+
+/* === RESPONSIVE / MOBILE (readable mode) === */
+@media (max-width: 700px) {
+    body {
+        padding-top: 100px; /* space for stacked header */
+    }
+
+    header {
+        padding: 0.4rem 0.75rem;
+        flex-direction: column;
+    }
+
+    .header-left {
+        justify-content: center;
+        width: 100%;
+    }
+    .header-left img {
+        height: 38px;
+    }
+    .header-text h1 {
+        font-size: 1rem;
+    }
+    .header-text h5 {
+        font-size: 0.7rem;
+    }
+
+    nav {
+        margin-top: 0.3rem;
+        justify-content: center;
+        width: 100%;
+    }
+    nav a {
+        margin: 0.35rem 0.75rem;
+        font-size: 0.9rem;
+        white-space: nowrap;
+    }
+
+    h2 {
+        font-size: 1.15rem;
+    }
+
+    section {
+        margin: 1.5rem auto;
+        padding: 0.75rem 1rem;
+    }
+
+    /* keep ascii lines from causing horizontal scroll */
+    .ascii-divider {
+        overflow: hidden;
+        white-space: nowrap;
+        font-size: 0.7rem;
+    }
+
+    /* stop fixed-width typing, let text wrap */
+    .typewriter {
+        animation: none;
+        white-space: normal;
+        border-right: none;
+        width: 100%;
+    }
+
+    .row .button,
+    .project-item .button {
+        min-width: 0;
+    }
+    .row.end {
+        justify-content: flex-start;
+    }
+
+    .project-item {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .project-item .button {
+        align-self: flex-end;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 0.2rem;
+        text-align: center;
+    }
 }
