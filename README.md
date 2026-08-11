@@ -18,16 +18,17 @@ Personal website and digital command center of Szymon Scherb (aka SIMKO), a DevS
 ├── index.html                     # Home / hub page
 ├── resume.html                    # Resume (work experience, certificates, education)
 ├── projects.html                  # Projects overview — only links to project pages
-├── contact.html                   # Contact form + GitHub link
+├── contact.html                   # Contact page — email reference + GitHub link
 ├── 404.html                       # Custom 404 page
 ├── robots.txt                     # Crawler rules (points to sitemap.xml)
-├── sitemap.xml                    # Sitemap — update base URL before publishing
+├── sitemap.xml                    # Sitemap for the GitHub Pages site
 ├── style.css                      # Global stylesheet
 ├── img/                           # Images and the logo (logo.svg, simko-logo.png)
 ├── projects/                      # One HTML file per project
 │   ├── kubernetes-hetzner-cluster.html
 │   ├── ai-home-integration.html
-│   └── smart-home-iot.html
+│   ├── smart-home-iot.html
+│   └── bt-chatbot.html
 └── README.md
 ```
 
@@ -44,7 +45,7 @@ python3 -m http.server 8000
 
 Then open <http://localhost:8000> in your browser.
 
-> **Note:** before publishing, replace the placeholder base URL `https://example.com/web-app/` in `sitemap.xml` (and `robots.txt`) with your real domain. The Open Graph `og:image` values are relative paths and also benefit from a canonical base URL being set.
+> **Note:** the site is published on GitHub Pages, so `sitemap.xml` and `robots.txt` point to the base URL `https://s-i-m-k-o.github.io/web-app/`. If you move the site to a custom domain, update that base URL there and set canonical `og:url` values.
 
 ## Adding a new project
 
@@ -57,6 +58,7 @@ Then open <http://localhost:8000> in your browser.
 
 - Styling lives exclusively in `style.css`; do not add inline styles or `<style>` blocks.
 - Use the existing utility classes: `.button`, `.row`, `.row.end`, `.project-list`, `.project-item`, `.project-card`, `.ascii-divider`, `.prompt`, `.ok`.
+- Mark the active page in the header nav with `class="active"` on the matching link (styled via `nav a.active`).
 - ASCII dividers are `<p class="ascii-divider">` elements, not `<div>`s.
 - Each page head should carry `<meta name="theme-color" content="#000">`, a `description`, and matching `og:` tags.
 - Keep text content in the tone of the site: short, technical, slightly geeky.
