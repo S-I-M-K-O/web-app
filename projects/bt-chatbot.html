@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HERMES VOICE ASSISTANT | PROJECTS</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/x-icon" href="../img/logo.svg">
+    <meta name="theme-color" content="#000">
+    <meta name="description" content="BT-CHATBOT - fully local, voice-activated AI chatbot with wake word, animated visor eye, Ollama and Piper TTS - project write-up by SIMKO.">
+    <meta property="og:title" content="HERMES Voice Assistant (BT-CHATBOT) - SIMKO">
+    <meta property="og:description" content="BT-CHATBOT - fully local, voice-activated AI chatbot with wake word, animated visor eye, Ollama and Piper TTS - project write-up by SIMKO.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="../img/simko-logo.png">
+</head>
+<body>
+<header>
+    <div class="header-left">
+        <a href="../index.html"><img src="../img/logo.svg" alt="Logo"></a>
+        <div class="header-text">
+            <h1>&lt;SZYMON_SCHERB/&gt;</h1>
+            <h5>aka SIMKO</h5>
+        </div>
+    </div>
+    <nav>
+        <a href="../index.html">HOME</a>
+        <a href="../resume.html">RESUME</a>
+        <a href="../projects.html" class="active">PROJECTS</a>
+        <a href="../contact.html">CONTACT</a>
+    </nav>
+</header>
+
+<section>
+    <p class="ascii-divider">+----------------------------------------------------------------------------------------</p>
+    <h2 class="typewriter" id="welcome-text">HERMES VOICE ASSISTANT</h2>
+    <p>Fully local, voice-activated AI chatbot.<br></p>
+    <p class="ascii-divider">+----------------------------------------------------------------------------------------</p>
+</section>
+<br>
+
+<section>
+    <div class="project-card">
+        <h1>BT-CHATBOT - HERMES Voice Assistant</h1>
+        <br>
+        <p>┬</p>
+        <p>| STATUS: RUNNING </p>
+        <p>┴</p>
+        <br>
+        <p>[+] Short summary:</p>
+        <br>
+        <p>HERMES is a voice-activated AI chatbot that lives in your web browser. Say the wake word, ask your question, and it thinks and answers aloud. Everything runs in a single Docker container: a Go backend, a local Ollama model, and a Piper text-to-speech voice. No API keys, nothing leaves the machine.</p>
+        <br>
+        <p>[+] Problem:</p>
+        <br>
+        <p>The big cloud voice assistants are convenient, but your speech and context get sent to somebody else's servers. For a DevSecOps mindset that's a non-starter. I wanted a voice assistant that is fully local - wake word, speech recognition, LLM and text-to-speech all running on my own hardware.</p>
+        <br>
+        <p>[+] Solution:</p>
+        <br>
+        <p>HERMES - built in Go, containerized with Docker Compose, and reachable at <a href="http://localhost:8080">http://localhost:8080</a>. This is the stack:</p>
+        <p>┬</p>
+        <p>├─ Go backend     - chat proxy, local knowledge base, Piper TTS, settings API</p>
+        <p>├─ Ollama         - local LLM (qwen3.5), nothing leaves the machine</p>
+        <p>├─ Piper TTS      - local voice model (BT7274) bundled in the container</p>
+        <p>├─ Web UI         - chat frontend + animated visor eye with reactive states</p>
+        <p>├─ Wake word      - "Hermes" via browser speech recognition</p>
+        <p>└─ Docker compose - one container, docker compose up -d --build</p>
+        <br>
+        <p>The animated visor eye in the center of the page reflects the state: idle drift, awaiting your call, scanning while the answer streams, pulsing while it speaks, and jittering when something fails. It pauses listening while talking, so it never hears itself.</p>
+        <br>
+        <p>[+] Lessons learned:</p>
+        <br>
+        <p>The backend first checks a small built-in knowledge base for greetings and common phrases; only if there's no local match does it call the local Ollama model and stream the response. That keeps instant answers offline and snappy. Reaching the host Ollama from inside the container via host.docker.internal was the one gotcha worth remembering.</p>
+        <br>
+        <div class="row end">
+            <a class="button" href="https://github.com/S-I-M-K-O/BT-CHATBOT" target="_blank" rel="noopener">[ OPEN REPO ]</a>
+            <a class="button" href="../projects.html">&lt; BACK TO PROJECTS</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 SIMKO. <br>All rights reserved.</p>
+</footer>
+
+</body>
+</html>
