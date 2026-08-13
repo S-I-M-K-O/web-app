@@ -20,6 +20,20 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    /* keep long words, URLs and emails from overflowing the viewport */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+p, a, h1, h2, h3, h5, li, span {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+/* never let a graphic blow past the narrowest screens */
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 /* Geeky touch: green text selection */
@@ -81,12 +95,12 @@ header {
     flex-direction: column;
     line-height: 1.2;
 }
-.header-text h1 {
+.site-title {
     margin: 0;
     font-size: 1.2rem;
     text-shadow: 0 0 6px rgba(0, 255, 102, 0.5);
 }
-.header-text h5 {
+.site-subtitle {
     margin: 0;
     font-size: 0.8rem;
     color: #00cc55;
@@ -124,7 +138,7 @@ nav a.active {
 }
 @keyframes typing {
     from { width: 0 }
-    to { width: 30% }
+    to { width: 100% }
 }
 @keyframes blink-caret {
     from, to { border-color: transparent }
@@ -142,6 +156,7 @@ h1, h2 {
     text-shadow: 0 0 6px rgba(0, 255, 102, 0.55);
 }
 
+section > h1,
 h2 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
@@ -151,6 +166,10 @@ h2 {
     color: #00cc55;
     margin: 1rem 0;
     font-weight: bold;
+    /* long ASCII lines must never force the page wider than the viewport */
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 /* === TERMINAL FLAIR === */
@@ -187,7 +206,7 @@ h2 {
     border: 1px dashed #00ff66;
     background: rgba(0, 255, 102, 0.04);
 }
-.project-card h1 {
+.project-card h2 {
     font-size: 1.4rem;
 }
 .project-card p {
@@ -212,6 +231,11 @@ h2 {
 .project-item span {
     flex: 1;
 }
+.project-item i {
+    font-style: normal;
+    color: #00cc55;
+    font-size: 0.85em;
+}
 .project-item .button {
     min-width: 100px;
     text-align: center;
@@ -224,7 +248,7 @@ section.resume {
     border: 1px dashed #00ff66;
     background: rgba(0, 255, 102, 0.04);
 }
-.resume h1 {
+.resume h2 {
     margin: 0 0 1.2rem 0;
     font-size: 1.4rem;
     padding-bottom: 0.5rem;
@@ -256,6 +280,12 @@ section.resume {
     box-shadow: 0 0 10px rgba(255, 255, 102, 0.25);
 }
 
+/* keyboard navigation must always have a visible focus ring */
+:focus-visible {
+    outline: 2px solid #ffff66;
+    outline-offset: 2px;
+}
+
 /* === FOOTER === */
 footer {
     width: 100%;
@@ -273,7 +303,7 @@ footer {
 /* === RESPONSIVE / MOBILE (readable mode) === */
 @media (max-width: 700px) {
     body {
-        padding-top: 100px; /* space for stacked header */
+        padding-top: 110px; /* space for stacked header */
     }
 
     header {
@@ -284,14 +314,22 @@ footer {
     .header-left {
         justify-content: center;
         width: 100%;
+        min-width: 0;
     }
     .header-left img {
         height: 38px;
+        flex-shrink: 0;
     }
-    .header-text h1 {
+    .header-text {
+        min-width: 0;
+    }
+    .site-title {
         font-size: 1rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
-    .header-text h5 {
+    .site-subtitle {
         font-size: 0.7rem;
     }
 
@@ -303,14 +341,17 @@ footer {
     nav a {
         margin: 0.3rem 0.35rem;
         padding: 0.4rem 0.5rem;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         white-space: nowrap;
     }
 
     .button {
         padding: 0.75rem 1rem;
+        max-width: 100%;
+        text-align: center;
     }
 
+    section > h1,
     h2 {
         font-size: 1.15rem;
     }
@@ -318,12 +359,11 @@ footer {
     section {
         margin: 1.5rem auto;
         padding: 0.75rem 1rem;
+        width: 100%;
     }
 
     /* keep ascii lines from causing horizontal scroll */
     .ascii-divider {
-        overflow: hidden;
-        white-space: nowrap;
         font-size: 0.7rem;
     }
 
@@ -355,6 +395,24 @@ footer {
         flex-direction: column;
         gap: 0.2rem;
         text-align: center;
+    }
+}
+
+/* very narrow phones: tighten header and dividers even more */
+@media (max-width: 480px) {
+    nav a {
+        font-size: 0.78rem;
+        padding: 0.35rem 0.4rem;
+        margin: 0.25rem 0.2rem;
+    }
+    .site-title {
+        font-size: 0.9rem;
+    }
+    .header-left img {
+        height: 32px;
+    }
+    .ascii-divider {
+        font-size: 0.55rem;
     }
 }
 
