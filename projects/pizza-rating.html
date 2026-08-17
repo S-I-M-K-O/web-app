@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIZZA RATING | PROJECTS</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/x-icon" href="../img/logo.svg">
+    <link rel="canonical" href="https://s-i-m-k-o.github.io/web-app/projects/pizza-rating.html">
+    <meta name="theme-color" content="#000">
+    <meta name="description" content="Pizza Rating - a LAN pizza rating page for DND sessions with Go backend, real-time updates and Docker - project write-up by SIMKO.">
+    <meta property="og:title" content="Pizza Rating - SIMKO">
+    <meta property="og:description" content="Pizza Rating - a LAN pizza rating page for DND sessions with Go backend, real-time updates and Docker - project write-up by SIMKO.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://s-i-m-k-o.github.io/web-app/projects/pizza-rating.html">
+    <meta property="og:image" content="https://s-i-m-k-o.github.io/web-app/img/simko-logo-og.jpg">
+</head>
+<body>
+<header>
+    <div class="header-left">
+        <a href="../index.html"><img src="../img/logo.svg" alt="Logo"></a>
+        <div class="header-text">
+            <p class="site-title">&lt;SZYMON_SCHERB/&gt;</p>
+            <p class="site-subtitle">aka SIMKO</p>
+        </div>
+    </div>
+    <nav>
+        <a href="../index.html">HOME</a>
+        <a href="../resume.html">RESUME</a>
+        <a href="../projects.html" class="active" aria-current="page">PROJECTS</a>
+        <a href="../contact.html">CONTACT</a>
+    </nav>
+</header>
+
+<section>
+    <p class="ascii-divider">+----------------------------------------------------------------------------------------</p>
+    <h1 class="typewriter" id="welcome-text">PIZZA RATING</h1>
+    <p>Settling the pizza debate, one DND session at a time.<br></p>
+    <p class="ascii-divider">+----------------------------------------------------------------------------------------</p>
+</section>
+<br>
+
+<section>
+    <div class="project-card">
+        <h2>Pizza Rating</h2>
+        <br>
+        <p>┬</p>
+        <p>| STATUS: DONE </p>
+        <p>| LAST UPDATE: MAY 2026 </p>
+        <p>┴</p>
+        <br>
+        <p>[+] Short summary:</p>
+        <br>
+        <p>For our DND sessions we needed a shared pizza rating page. Every game night ends in the same debate about which pizzeria actually delivers, so I built a simple page the whole group can use from their phones - everyone rates the pizza, the page keeps the score.</p>
+        <br>
+        <p>[+] Problem:</p>
+        <br>
+        <p>Game night, everyone hungry, nobody can remember which pizzeria was actually good last time. Opinions are loud, memories are short, and the group always ends up ordering from the same place out of habit.</p>
+        <br>
+        <p>[+] Solution:</p>
+        <br>
+        <p>A small app that runs on the LAN and is reachable from every phone in the room. The stack:</p>
+        <p>┬</p>
+        <p>├─ Go backend       - HTTP API, serves ratings from data.json</p>
+        <p>├─ data.json        - persistent storage backed by a Docker volume</p>
+        <p>├─ Plain HTML/CSS/JS - mobile-first frontend, no framework</p>
+        <p>├─ Real-time updates - new ratings appear on every device instantly</p>
+        <p>├─ Smart sorting     - pizzerias ranked by highest score</p>
+        <p>└─ docker compose    - one command, up and running</p>
+        <br>
+        <p>Rate a pizzeria from 1 to 6, drop an optional comment, and the list re-sorts itself on the fly. Duplicate pizzeria names get normalized automatically, so "Pizza  Napoletana" and "pizza napoletana" don't split the votes.</p>
+        <br>
+        <p>[+] Lessons learned:</p>
+        <br>
+        <p>Keep it boring and it just works. A Go server, a JSON file and a bit of plain JavaScript covered everything the group needed - no database, no frontend framework, no over-engineering. The data outlives the sessions because it persists in a Docker volume.</p>
+        <p>Next time I would add live-update via WebSockets instead of polling, so a new rating appears even on a phone sitting in another room while the game is still running.</p>
+        <br>
+        <div class="row end">
+            <a class="button" href="https://github.com/S-I-M-K-O/pizza-rating" target="_blank" rel="noopener">[ OPEN REPO ]</a>
+            <a class="button" href="../projects.html">&lt; BACK TO PROJECTS</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 SIMKO. <br>All rights reserved.</p>
+</footer>
+
+</body>
+</html>

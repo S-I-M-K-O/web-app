@@ -28,6 +28,7 @@ Personal website and digital command center of Szymon Scherb (aka SIMKO), a DevS
 │   ├── kubernetes-hetzner-cluster.html
 │   ├── ai-home-integration.html
 │   ├── smart-home-iot.html
+│   ├── pizza-rating.html
 │   └── bt-chatbot.html
 └── README.md
 ```
